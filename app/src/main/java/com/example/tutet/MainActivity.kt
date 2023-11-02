@@ -1,5 +1,6 @@
 package com.example.tutet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,8 +10,8 @@ import com.example.tutet.models.Calculator
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var edtnum1:EditText
-    lateinit var edtnum2:EditText
+    private lateinit var edtnum1:EditText
+    private lateinit var edtnum2:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
              R.id.btndiv -> ans = calculator.divide()
 
          }
+
+         val intent = Intent(this,DisplayActivity::class.java)
+         intent.putExtra("Answer",ans)
+         startActivity(intent)
+         finish()
 
          Toast.makeText(this, "Answer = $ans" ,Toast.LENGTH_LONG).show()
 
